@@ -1,0 +1,7 @@
+tensorflow
+matplotlib
+simpy
+pandas
+progressbar
+collections
+numpy
