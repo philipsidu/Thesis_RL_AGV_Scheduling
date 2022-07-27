@@ -287,10 +287,10 @@ class ZScoreNormalization(object):
             self.attr_alg = dict(**self.config)
 
     def get_z_score_normalization(self, value):
-        if self.std != 0 and value != None:
+        if self.std != 0 and value is not None:
             normalized = (value - self.mean) / self.std
             return normalized
-        elif value == None:
+        elif value is None:
             return -1
         else:
             return 0

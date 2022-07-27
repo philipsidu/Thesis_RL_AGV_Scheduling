@@ -1,19 +1,18 @@
 from logger import *
-from production.envs.production_env import *
-from production.envs import ProductionEnv
+from prod.RLenv.production_env import *
 from tensorforce.environments import Environment
 from tensorforce.execution import Runner
 
 # tf.set_random_seed(10)
 
 timesteps = 10 ** 3  # Set time steps per episode
-episodes = 10 ** 3  # Set number of episodes
+episodes = 10 ** 1  # Set number of episodes
 
-environment_production = Environment.create(environment='production.envs.ProductionEnv',
+environment_production = Environment.create(environment='prod.RLenv.ProductionEnv',
                                             max_episode_timesteps=timesteps)
 
 # Tensorforce runner
-runner = Runner(agent='config/trpo1.json', environment=environment_production)
+runner = Runner(agent='config/ppo1.json', environment=environment_production)
 environment_production.agents = runner.agent
 
 # Run training

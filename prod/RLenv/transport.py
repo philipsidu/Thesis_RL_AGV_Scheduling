@@ -600,11 +600,11 @@ class Transport(Resource):
                 order.order_log.append(["picked_up", order.id, round(self.env.now, 5), self.id])
                 handling_time = 0.0
                 if order.current_location.type == "source":
-                    handling_time = self.time_calc.handling_time(MachineOrSource="source", LoadOrUnload="unload",
+                    handling_time = self.time_calc.handling_time(machineorsource="source", loadorunload="unload",
                                                                  transp=self, statistics=self.statistics,
                                                                  parameters=self.parameters)
                 elif order.current_location.type == "machine":
-                    handling_time = self.time_calc.handling_time(MachineOrSource="machine", LoadOrUnload="unload",
+                    handling_time = self.time_calc.handling_time(machineorsource="machine", loadorunload="unload",
                                                                  transp=self, statistics=self.statistics,
                                                                  parameters=self.parameters)
                 self.transp_log.append(
@@ -628,11 +628,11 @@ class Transport(Resource):
                 # Handling order put down
                 handling_time = 0.0
                 if order.current_location.type == "sink":
-                    handling_time = self.time_calc.handling_time(MachineOrSource="source", LoadOrUnload="load",
+                    handling_time = self.time_calc.handling_time(machineorsource="source", loadorunload="load",
                                                                  transp=self, statistics=self.statistics,
                                                                  parameters=self.parameters)
                 elif order.current_location.type == "machine":
-                    handling_time = self.time_calc.handling_time(MachineOrSource="machine", LoadOrUnload="load",
+                    handling_time = self.time_calc.handling_time(machineorsource="machine", loadorunload="load",
                                                                  transp=self, statistics=self.statistics,
                                                                  parameters=self.parameters)
                 yield self.env.timeout(handling_time)
